@@ -1,0 +1,38 @@
+Options -Indexes
+DirectoryIndex landing.html index.html
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule ^worker(?:/|$) - [F,L,NC]
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+</IfModule>
+
+<IfModule mod_headers.c>
+Header always set X-Content-Type-Options "nosniff"
+Header always set Referrer-Policy "strict-origin-when-cross-origin"
+Header always set X-Frame-Options "DENY"
+Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+Header always set Strict-Transport-Security "max-age=15552000" env=HTTPS
+
+# Revalidate application documents and never cache the public API configuration.
+<FilesMatch "^(index|auth|landing|404)\.html$">
+  Header always set Cache-Control "no-cache, max-age=0, must-revalidate"
+  Header always set Pragma "no-cache"
+</FilesMatch>
+<Files "site-config.js">
+  Header always set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+  Header always set Pragma "no-cache"
+  Header always set Expires "0"
+</Files>
+</IfModule>
+
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresByType text/css "access plus 7 days"
+ExpiresByType application/javascript "access plus 7 days"
+ExpiresByType image/png "access plus 30 days"
+ExpiresByType image/jpeg "access plus 30 days"
+ExpiresByType image/svg+xml "access plus 30 days"
+ExpiresByType application/manifest+json "access plus 7 days"
+</IfModule>

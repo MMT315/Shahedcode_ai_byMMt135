@@ -1,0 +1,28 @@
+/* Shahedcode V7.0 — coherent, responsive interface refinements */
+:root{--v64-radius:18px;--v64-shadow:0 18px 52px rgba(0,0,0,.18);--v64-line:color-mix(in srgb,var(--border,#7b87a8) 68%,transparent)}
+html{scroll-behavior:smooth;text-rendering:optimizeLegibility;-webkit-text-size-adjust:100%}body{min-height:100dvh;overflow-x:hidden}.app-shell{isolation:isolate}
+.topbar{min-height:68px;padding-inline:clamp(12px,2.3vw,28px);border-bottom:1px solid var(--v64-line);background:color-mix(in srgb,var(--panel,#101729) 90%,transparent);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);box-shadow:0 8px 30px rgba(0,0,0,.11)}
+.brand-name{font-weight:900;letter-spacing:-.35px}.brand-logo{box-shadow:0 7px 24px var(--glow-1,rgba(100,100,255,.18))}
+.header-btn,.v6-quick-btn,.icon-btn{border-radius:13px;transition:transform .18s ease,border-color .18s ease,background .18s ease,box-shadow .18s ease}.header-btn:hover:not(:disabled),.v6-quick-btn:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 8px 22px rgba(76,91,180,.16)}
+.chat-stream{width:min(100%,1120px);margin-inline:auto;padding:clamp(16px,3vw,32px) clamp(12px,2.5vw,28px) 22px;scroll-padding-block:20px}
+.welcome-card{width:min(100%,780px);margin:clamp(22px,6vh,64px) auto 28px;padding:clamp(22px,4vw,40px);border:1px solid var(--v64-line);border-radius:26px;background:linear-gradient(145deg,color-mix(in srgb,var(--panel,#121a2a) 95%,transparent),color-mix(in srgb,var(--bg-soft,#0b1220) 92%,transparent));box-shadow:var(--v64-shadow)}
+.welcome-logo{box-shadow:0 12px 32px var(--glow-1,rgba(91,85,230,.2))}.welcome-title{letter-spacing:-.6px;font-weight:900}.welcome-text{max-width:610px;margin-inline:auto;line-height:2}
+.suggestion-chip{min-height:42px;padding-inline:13px;border-radius:13px;border:1px solid var(--v64-line);background:color-mix(in srgb,var(--panel,#121a2a) 86%,transparent);transition:transform .16s,border-color .16s,background .16s}.suggestion-chip:hover{transform:translateY(-2px);border-color:var(--border-strong);background:var(--accent-soft)}
+.msg-bubble{border-radius:18px;line-height:1.95;box-shadow:0 7px 24px rgba(0,0,0,.055);overflow-wrap:anywhere}.msg-bubble pre{max-width:100%;overflow:auto;border-radius:13px}.msg-bubble img{max-width:100%;height:auto}
+.composer{padding:12px clamp(12px,2.5vw,28px) calc(12px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--v64-line);background:color-mix(in srgb,var(--panel,#101729) 90%,transparent);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.composer-box{width:min(100%,960px);margin-inline:auto;padding:8px 9px;border:1px solid var(--v64-line)!important;border-radius:18px;background:var(--panel-2,var(--panel,#151c2c));box-shadow:0 10px 30px rgba(0,0,0,.12)}#userInput{min-height:48px;padding:12px 14px;font-size:14px;line-height:1.8;background:transparent}.send-btn{width:46px;height:46px;flex:0 0 46px;border-radius:14px}
+.sidebar{border-inline-start:1px solid var(--v64-line);box-shadow:var(--v64-shadow);backdrop-filter:blur(24px)}.side-profile-card{border:1px solid var(--v64-line);border-radius:17px;transition:border-color .18s,transform .18s}.side-profile-card:hover{transform:translateY(-1px);border-color:var(--border-strong)}
+.modal{border:1px solid var(--v64-line);box-shadow:0 24px 70px rgba(0,0,0,.28)}#v6QuickActions{gap:7px}.v6-quick-btn{min-height:40px;padding-inline:12px;border:1px solid var(--v64-line);font-weight:800}.v6-image-btn{box-shadow:0 7px 22px rgba(20,160,150,.12)}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid color-mix(in srgb,var(--accent,#718cff) 78%,white);outline-offset:3px}
+@media(max-width:720px){.topbar{min-height:60px;padding-inline:9px}.chat-stream{padding:14px 11px 18px}.welcome-card{margin:22px auto 18px;padding:21px 15px;border-radius:20px}.welcome-title{font-size:clamp(22px,6vw,29px)}.suggestion-chip{min-height:39px;font-size:11px;padding-inline:10px}.composer{padding:9px 10px calc(10px + env(safe-area-inset-bottom,0px))}.composer-box{border-radius:16px}.send-btn{width:43px;height:43px;flex-basis:43px}.v6-quick-btn{min-width:40px;min-height:40px;padding-inline:10px}}
+@media(max-width:390px){.topbar{gap:5px}.header-actions{gap:4px}.v6-label{display:none}.welcome-card{padding:18px 12px}.chat-stream{padding-inline:8px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.header-btn,.v6-quick-btn,.icon-btn,.suggestion-chip,.side-profile-card{transition:none}}
+
+/* V6.6 interaction and layout refinements */
+:where(button,a,input,select,textarea){-webkit-tap-highlight-color:transparent}
+:where(button,a):focus-visible{outline-offset:3px}
+img,svg,video,canvas{max-width:100%}
+.chat-stream,.sidebar,.modal,.account-modal{overscroll-behavior:contain}
+@media(min-width:1100px){.chat-stream{width:min(100%,1160px)}.composer-box{width:min(100%,1000px)}}
+@media(max-width:720px){.topbar{padding-top:env(safe-area-inset-top,0px)}.composer{padding-bottom:calc(12px + env(safe-area-inset-bottom,0px))}.modal,.account-modal{max-width:calc(100vw - 16px);max-height:calc(100dvh - 16px)}}
+@media(prefers-contrast:more){.suggestion-chip,.header-btn,.v6-quick-btn{border-color:var(--border-strong,var(--accent))}}
